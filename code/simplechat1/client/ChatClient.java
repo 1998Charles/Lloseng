@@ -8,6 +8,7 @@ import ocsf.client.*;
 import common.*;
 import java.io.*;
 
+
 /**
  * This class overrides some of the methods defined in the abstract
  * superclass in order to give more functionality to the client.
@@ -25,7 +26,9 @@ public class ChatClient extends AbstractClient
    * The interface type variable.  It allows the implementation of 
    * the display method in the client.
    */
-  ChatIF clientUI; 
+  ChatIF clientUI;
+
+  private String loginID; 
 
   
   //Constructors ****************************************************
@@ -38,11 +41,12 @@ public class ChatClient extends AbstractClient
    * @param clientUI The interface type variable.
    */
   
-  public ChatClient(String host, int port, ChatIF clientUI) 
+  public ChatClient(String loginID, String host, int port, ChatIF clientUI) 
     throws IOException 
   {
     super(host, port); //Call the superclass constructor
     this.clientUI = clientUI;
+    this.loginID = loginID;
     openConnection();
   }
 
@@ -68,13 +72,77 @@ public class ChatClient extends AbstractClient
   {
     try
     {
-      sendToServer(message);
+      char[] messageArray = message.toCharArray();
+
+      if (messageArray[0] == '#') {
+        String [] stringArray = message.split("\\s+");
+        if (stringArray[0].equals("#sethost")) {
+          if (isConnected() == false){
+            setHost(stringArray[1]);
+          }
+          else{
+            System.out.println("Only allowed if the client is logged off.");
+          }
+        }
+
+        else if (stringArray[0].equals("#setport")) {
+          if (isConnected() == false){
+            setPort(Integer.parseInt(stringArray[1]));
+          }
+          else {
+            System.out.println("Only allowed if the client is logged off.");
+          }
+        }
+
+        else if (stringArray[0] != "#setport" && stringArray[0] != "#setport"){ 
+          switch(message){
+            case "#quit" :
+            quit();
+            break;
+            case "#logoff" :
+            closeConnection();
+            break;
+            case "#login" :
+            openConnection();
+            break;
+            case "#gethost" :
+            System.out.println("The current host name is " + getHost() + ".");
+            break;
+            case "#getport" :
+            System.out.println("The current port number is " + getPort() + ".");
+            break;
+            default :
+            sendToServer(message);
+          }
+        }
+        else {
+          sendToServer(message);
+        }
+      }
+      else {
+        sendToServer(message);
+      }
     }
+
     catch(IOException e)
     {
       clientUI.display
-        ("Could not send message to server.  Terminating client.");
+      ("Could not send message to server.  Terminating client.");
       quit();
+    }
+
+    catch(ArrayIndexOutOfBoundsException e)
+    {
+      try
+      {
+        sendToServer(message);
+      }
+      catch(IOException ex)
+      {
+        clientUI.display
+        ("Could not send message to server.  Terminating client.");
+        quit();
+      }
     }
   }
   
@@ -90,5 +158,64 @@ public class ChatClient extends AbstractClient
     catch(IOException e) {}
     System.exit(0);
   }
+
+//WAS the end of ChatClient class
+
+// ACCESSING METHODS ------------------------------------------------
+
+  /**
+   * Returns the login ID.
+   *
+   * @return the login ID.
+   */
+  final public String getloginID()
+  {
+    return loginID;
+  }
+
+  // METHODS DESIGNED TO BE OVERRIDDEN BY CONCRETE SUBCLASSES ---------
+
+  /**
+   * Hook method called after the connection has been closed. The default
+   * implementation does nothing. The method may be overriden by subclasses to
+   * perform special processing such as cleaning up and terminating, or
+   * attempting to reconnect.
+   */
+  protected void connectionClosed() {
+    System.out.println("The connection has closed.");  //Indicates the connection has closed.
+  }
+
+  /**
+   * Hook method called each time an exception is thrown by the client's
+   * thread that is waiting for messages from the server. The method may be
+   * overridden by subclasses.
+   * 
+   * @param exception
+   *            the exception raised.
+   */
+  protected void connectionException(Exception exception) {
+       System.out.println("The server has shut down.");  //Indicates the server has shut down.
+       // quit();  //Quits the client console.
+  }
+
+  /**
+   * Hook method called after a connection has been established. The default
+   * implementation does nothing. It may be overridden by subclasses to do
+   * anything they wish.
+   */
+  protected void connectionEstablished() {
+    System.out.println("The connection has established.");  //Indicates the connection has established.
+    try
+    {
+    sendToServer("#login " + getloginID());
+    }
+    catch(IOException e)
+    {
+      clientUI.display
+        ("Could not set login ID.  Terminating client.");
+        quit();
+    }
+  }
 }
-//End of ChatClient class
+
+
