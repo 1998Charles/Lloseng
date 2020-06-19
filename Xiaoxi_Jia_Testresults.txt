@@ -1,0 +1,313 @@
+Name: Xiaoxi Jia
+ID: 300000227
+E-mail: xjia033@uottawa.ca
+
+jiaxiaoxi@MacBook-Pro-Xi simplechat1 % java -classpath '../../code:.' ServerConsole     
+Server listening for connections on port 5555
+^C%
+jiaxiaoxi@MacBook-Pro-Xi simplechat1 % 
+
+
+
+jiaxiaoxi@MacBook-Pro-Xi simplechat1 % java -classpath '../../code:.' ClientConsole                      
+Error: Can't setup connection! LoginID is mandatory. Terminating client.
+jiaxiaoxi@MacBook-Pro-Xi simplechat1 %
+
+
+
+jiaxiaoxi@MacBook-Pro-Xi simplechat1 % java -classpath '../../code:.' ClientConsole Xiaoxi_Jia
+Error: Can't setup connection! Terminating client.
+jiaxiaoxi@MacBook-Pro-Xi simplechat1 %
+
+
+
+jiaxiaoxi@MacBook-Pro-Xi simplechat1 % java -classpath '../../code:.' ServerConsole                  
+Server listening for connections on port 5555
+A new client is attempting to connect to the server.
+#login Xiaoxi_Jia has logged on.
+Xiaoxi_Jia has disconnected.
+^C%                                                                                                                              jiaxiaoxi@MacBook-Pro-Xi simplechat1 % 
+
+jiaxiaoxi@MacBook-Pro-Xi simplechat1 % java -classpath '../../code:.' ClientConsole Xiaoxi_Jia
+The connection has established.
+^C%                                                                                                                        jiaxiaoxi@MacBook-Pro-Xi simplechat1 %
+
+
+
+jiaxiaoxi@MacBook-Pro-Xi simplechat1 % java -classpath '../../code:.' ServerConsole                  
+Server listening for connections on port 5555
+A new client is attempting to connect to the server.
+#login Xiaoxi_Jia has logged on.
+Message received: Hello, World. from localhost (127.0.0.1) Xiaoxi_Jia
+^C%                                                                                                                              jiaxiaoxi@MacBook-Pro-Xi simplechat1 %
+
+jiaxiaoxi@MacBook-Pro-Xi simplechat1 % java -classpath '../../code:.' ClientConsole Xiaoxi_Jia
+The connection has established.
+Hello, World.
+> Xiaoxi_Jia: Hello, World.
+The server has shut down.
+^C%                                                                                                                        jiaxiaoxi@MacBook-Pro-Xi simplechat1 %
+
+
+
+
+jiaxiaoxi@MacBook-Pro-Xi simplechat1 % java -classpath '../../code:.' ServerConsole
+Server listening for connections on port 5555
+A new client is attempting to connect to the server.
+#login Xiaoxi_Jia has logged on.
+A new client is attempting to connect to the server.
+#login User_1 has logged on.
+Message received: Hello! from localhost (127.0.0.1) Xiaoxi_Jia
+Message received: Hi! from localhost (127.0.0.1) User_1
+
+SERVER MSG> 
+User_1 has disconnected.
+Xiaoxi_Jia has disconnected.
+
+jiaxiaoxi@MacBook-Pro-Xi simplechat1 % java -classpath '../../code:.' ClientConsole Xiaoxi_Jia
+The connection has established.
+Hello!
+> Xiaoxi_Jia: Hello!
+> User_1: Hi!
+> SERVER MSG> 
+^C%                                                                                                                        jiaxiaoxi@MacBook-Pro-Xi simplechat1 %
+
+jiaxiaoxi@MacBook-Pro-Xi simplechat1 % java -classpath '../../code:.' ClientConsole User_1           
+The connection has established.
+> Xiaoxi_Jia: Hello!
+Hi!
+> User_1: Hi!
+> SERVER MSG> 
+^C%                                                                                                               jiaxiaoxi@MacBook-Pro-Xi simplechat1 %
+
+
+
+jiaxiaoxi@MacBook-Pro-Xi simplechat1 % java -classpath '../../code:.' ServerConsole
+Server listening for connections on port 5555
+#quit
+The server has closed.
+Server has stopped listening for connections.
+jiaxiaoxi@MacBook-Pro-Xi simplechat1 %
+
+
+
+jiaxiaoxi@MacBook-Pro-Xi simplechat1 % java -classpath '../../code:.' ServerConsole
+Server listening for connections on port 5555
+A new client is attempting to connect to the server.
+#login Xiaoxi_Jia has logged on.
+#stop
+Server has stopped listening for connections.
+Message received: Hello? from localhost (127.0.0.1) Xiaoxi_Jia
+#start
+Server listening for connections on port 5555
+A new client is attempting to connect to the server.
+#login User_1 has logged on.
+#quit
+Server has stopped listening for connections.
+Xiaoxi_Jia is disconnected by server.
+User_1 is disconnected by server.
+The server has closed.
+jiaxiaoxi@MacBook-Pro-Xi simplechat1 %
+
+jiaxiaoxi@MacBook-Pro-Xi simplechat1 % java -classpath '../../code:.' ClientConsole Xiaoxi_Jia
+The connection has established.
+Hello?
+> Xiaoxi_Jia: Hello?
+The server has shut down.
+^C%                                                                                                                        jiaxiaoxi@MacBook-Pro-Xi simplechat1 %
+
+jiaxiaoxi@MacBook-Pro-Xi simplechat1 % java -classpath '../../code:.' ClientConsole User_1
+The connection has established.
+The server has shut down.
+^C%                                                                                                               jiaxiaoxi@MacBook-Pro-Xi simplechat1 %
+
+
+
+jiaxiaoxi@MacBook-Pro-Xi simplechat1 % java -classpath '../../code:.' ServerConsole
+Server listening for connections on port 5555
+A new client is attempting to connect to the server.
+#login Xiaoxi_Jia has logged on.
+#stop
+Server has stopped listening for connections.
+#close
+Xiaoxi_Jia is disconnected by server.
+The server has closed.
+^C%                                                                                                                              jiaxiaoxi@MacBook-Pro-Xi simplechat1 %
+
+jiaxiaoxi@MacBook-Pro-Xi simplechat1 % java -classpath '../../code:.' ClientConsole Xiaoxi_Jia
+The connection has established.
+The server has shut down.
+^C%                                                                                                                        jiaxiaoxi@MacBook-Pro-Xi simplechat1 %
+
+
+
+jiaxiaoxi@MacBook-Pro-Xi simplechat1 % java -classpath '../../code:.' ServerConsole
+Server listening for connections on port 5555
+A new client is attempting to connect to the server.
+#login Xiaoxi_Jia has logged on.
+#close
+Server has stopped listening for connections.
+Xiaoxi_Jia is disconnected by server.
+The server has closed.
+#start
+Server listening for connections on port 5555
+A new client is attempting to connect to the server.
+#login Xiaoxi_Jia has logged on.
+Xiaoxi_Jia has disconnected.
+#quit
+The server has closed.
+Server has stopped listening for connections.
+jiaxiaoxi@MacBook-Pro-Xi simplechat1 %
+
+jiaxiaoxi@MacBook-Pro-Xi simplechat1 % java -classpath '../../code:.' ClientConsole Xiaoxi_Jia
+The connection has established.
+The server has shut down.
+#login
+The connection has established.
+^C%                                                                                                                        jiaxiaoxi@MacBook-Pro-Xi simplechat1 %
+
+
+
+jiaxiaoxi@MacBook-Pro-Xi simplechat1 % java -classpath '../../code:.' ClientConsole           
+Error: Can't setup connection! LoginID is mandatory. Terminating client.
+jiaxiaoxi@MacBook-Pro-Xi simplechat1 %
+
+
+
+jiaxiaoxi@MacBook-Pro-Xi simplechat1 % java -classpath '../../code:.' ServerConsole
+Server listening for connections on port 5555
+A new client is attempting to connect to the server.
+#login Xiaoxi_Jia has logged on.
+Xiaoxi_Jia has disconnected.
+
+jiaxiaoxi@MacBook-Pro-Xi simplechat1 % java -classpath '../../code:.' ClientConsole Xiaoxi_Jia
+The connection has established.
+#logoff
+The connection has closed.
+#quit
+The connection has closed.
+jiaxiaoxi@MacBook-Pro-Xi simplechat1 %
+
+
+
+jiaxiaoxi@MacBook-Pro-Xi simplechat1 % java -classpath '../../code:.' ServerConsole
+Server listening for connections on port 5555
+A new client is attempting to connect to the server.
+#login Xiaoxi_Jia has logged on.
+Xiaoxi_Jia has disconnected.
+
+jiaxiaoxi@MacBook-Pro-Xi simplechat1 % java -classpath '../../code:.' ServerConsole 1234
+Server listening for connections on port 1234
+A new client is attempting to connect to the server.
+#login Xiaoxi_Jia has logged on.
+Xiaoxi_Jia has disconnected.
+
+jiaxiaoxi@MacBook-Pro-Xi simplechat1 % java -classpath '../../code:.' ClientConsole Xiaoxi_Jia
+The connection has established.
+#gethost
+The current host name is localhost.
+#getport
+The current port number is 5555.
+#logoff 
+The connection has closed.
+#sethost 192.168.1.163
+#setport 1234
+#login
+The connection has established.
+#quit
+The connection has closed.
+jiaxiaoxi@MacBook-Pro-Xi simplechat1 %
+
+
+
+jiaxiaoxi@MacBook-Pro-Xi simplechat1 % java -classpath '../../code:.' ServerConsole 1234
+Server listening for connections on port 1234
+#quit
+The server has closed.
+Server has stopped listening for connections.
+jiaxiaoxi@MacBook-Pro-Xi simplechat1 % 
+
+
+
+jiaxiaoxi@MacBook-Pro-Xi simplechat1 % java -classpath '../../code:.' ServerConsole 1234
+Server listening for connections on port 1234
+A new client is attempting to connect to the server.
+#login Xiaoxi_Jia has logged on.
+
+jiaxiaoxi@MacBook-Pro-Xi simplechat1 % java -classpath '../../code:.' ClientConsole Xiaoxi_Jia 192.168.1.163 1234
+The connection has established.
+
+
+
+jiaxiaoxi@MacBook-Pro-Xi simplechat1 % java -classpath '../../code:.' ServerConsole
+Server listening for connections on port 5555
+A new client is attempting to connect to the server.
+#login Xiaoxi_Jia has logged on.
+A new client is attempting to connect to the server.
+#login User_1 has logged on.
+#close
+Server has stopped listening for connections.
+Xiaoxi_Jia is disconnected by server.
+User_1 is disconnected by server.
+The server has closed.
+#setport 1234
+#start
+Server listening for connections on port 1234
+A new client is attempting to connect to the server.
+#login Xiaoxi_Jia has logged on.
+A new client is attempting to connect to the server.
+#login User_1 has logged on.
+User_1 has disconnected.
+Xiaoxi_Jia has disconnected.
+#quit
+The server has closed.
+Server has stopped listening for connections.
+jiaxiaoxi@MacBook-Pro-Xi simplechat1 %
+
+jiaxiaoxi@MacBook-Pro-Xi simplechat1 % java -classpath '../../code:.' ClientConsole Xiaoxi_Jia 192.168.1.163     
+The connection has established.
+The server has shut down.
+#setport 1234
+#login
+The connection has established.
+#quit
+The connection has closed.
+jiaxiaoxi@MacBook-Pro-Xi simplechat1 %
+
+jiaxiaoxi@MacBook-Pro-Xi simplechat1 % java -classpath '../../code:.' ClientConsole User_1
+The connection has established.
+The server has shut down.
+#setport 1234
+#login
+The connection has established.
+#quit
+The connection has closed.
+jiaxiaoxi@MacBook-Pro-Xi simplechat1 %
+
+
+
+jiaxiaoxi@MacBook-Pro-Xi simplechat1 % java -classpath '../../code:.' ServerConsole
+Server listening for connections on port 5555
+A new client is attempting to connect to the server.
+#login Xiaoxi_Jia has logged on.
+A new client is attempting to connect to the server.
+#login User_1 has logged on.
+A new client is attempting to connect to the server.
+#login User_2 has logged on.
+User_1 has disconnected.
+User_2 has disconnected.
+
+jiaxiaoxi@MacBook-Pro-Xi simplechat1 % java -classpath '../../code:.' ClientConsole Xiaoxi_Jia               
+The connection has established.
+
+jiaxiaoxi@MacBook-Pro-Xi simplechat1 % java -classpath '../../code:.' ClientConsole User_1
+The connection has established.
+#quit
+The connection has closed.
+jiaxiaoxi@MacBook-Pro-Xi simplechat1 %
+
+jiaxiaoxi@MacBook-Pro-Xi simplechat1 % java -classpath '../../code:.' ClientConsole User_2
+The connection has established.
+#logoff
+The connection has closed.
+
